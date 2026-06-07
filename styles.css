@@ -131,20 +131,22 @@ h1 {
 }
 
 .title-row {
-  position: relative;
-  display: inline-block;
-  padding-right: 96px;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
 }
 
 .new-badge {
-  position: absolute;
-  top: -2px;
-  right: 7.5%;
-  color: #6c6f71;
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  animation: new-badge-flash 1.5s steps(1, end) infinite;
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--accent-warm);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 h2 {
@@ -435,17 +437,6 @@ tbody tr:nth-child(even) {
   }
 }
 
-@keyframes new-badge-flash {
-  0%,
-  49% {
-    opacity: 1;
-  }
-  50%,
-  100% {
-    opacity: 0;
-  }
-}
-
 @media (max-width: 960px) {
   .hero,
   .tag-groups {
@@ -461,18 +452,6 @@ tbody tr:nth-child(even) {
 
   h1 {
     font-size: clamp(2.4rem, 10vw, 4rem);
-  }
-
-  .title-row {
-    display: block;
-    padding-right: 0;
-    padding-top: 22px;
-  }
-
-  .new-badge {
-    top: 0;
-    left: 0;
-    right: auto;
   }
 
   .hero-card {
