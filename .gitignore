@@ -1,0 +1,9 @@
+# JetBrains IDE files (IntelliJ IDEA, WebStorm, PyCharm, etc.)
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# macOS
+.DS_Store
