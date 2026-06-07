@@ -6,12 +6,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A static, no-build front end for the **MapAid Online Water Library ("OWL")** — a
 browse/search UI over a classified archive of African water-infrastructure documents
-(produced by a MapAid x Databricks data pipeline, see `../_resources/Code`). There is
-no server, no package manager, and no build step: open `index.html` directly or serve
-the directory with any static file server (e.g. `python3 -m http.server`).
+(produced by a MapAid x Databricks data pipeline, see the sibling `../_resources`
+directory — outside this git repo — for the pipeline code, raw archive spreadsheet,
+and `scripts/export_archive_data.py` which generates the `web-data/` exports). There
+is no server, no package manager, and no build step: open `index.html` directly or
+serve the directory with any static file server (e.g. `python3 -m http.server`).
 
-Note: the git repository root is one level up at `/Users/esemen/Sites/gma/owl`; this
-`web/` directory is the deployable site.
+This `owl-ui` directory is itself the git repository root and the deployable site.
 
 ## Architecture
 
@@ -35,15 +36,16 @@ Note: the git repository root is one level up at `/Users/esemen/Sites/gma/owl`; 
   - Permission state (`hydratePermissionState`/`syncDownloadState`) just reflects
     whether the `localStorage` access record exists; it does not currently gate any
     content in the UI.
-- `web-data/archive-data.js` — generated data bundle. Defines
-  `window.MAPAID_LIBRARY_DATA = { summary, documents, wells }`, a large (~400KB)
-  inlined copy of the JSON exports, used as the primary data source (see `init()`
-  above). `summary.featuredGeographies` / `summary.featuredLocations` drive the tag
-  lists; `summary.downloadFiles` records the relative paths of the source
-  spreadsheet/JSON/CSV exports.
-- `web-data/*.json` / `web-data/*.csv` — the underlying per-row exports for the two
-  datasets (document classifications and well extractions), generated upstream by
-  `../_resources/scripts/export_archive_data.py` from the Databricks pipeline output.
+- `web-data/archive-data.js` — generated data bundle, currently the only file in
+  `web-data/`. Defines `window.MAPAID_LIBRARY_DATA = { summary, documents, wells }`,
+  a large (~400KB) inlined copy of the JSON exports, and is the primary (in practice
+  only) data source — see `init()` above. `summary.featuredGeographies` /
+  `summary.featuredLocations` drive the tag lists; `summary.downloadFiles` records
+  the relative paths of the source spreadsheet/JSON/CSV exports. `init()` also has a
+  fallback path that fetches `web-data/summary.json` plus each `DATASETS[...].file`
+  (e.g. `web-data/document_classifications.json`) when the embedded global is absent
+  — those per-dataset JSON/CSV exports aren't currently checked in, so that path only
+  works if you regenerate and add them via `../_resources/scripts/export_archive_data.py`.
 - `styles.css` — all styling; uses CSS custom properties defined on `:root` for the
   warm "archive" color palette, plus a `page-shell`/`panel` layout convention reused
   across both pages.
