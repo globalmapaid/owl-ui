@@ -1,0 +1,507 @@
+:root {
+  --bg: #f4efe6;
+  --bg-soft: #fbf8f1;
+  --ink: #1f2a2e;
+  --muted: #5f6d6d;
+  --line: rgba(31, 42, 46, 0.12);
+  --accent: #0f766e;
+  --accent-strong: #0b4f4a;
+  --accent-warm: #d68c45;
+  --panel: rgba(255, 252, 247, 0.86);
+  --shadow: 0 24px 60px rgba(18, 40, 38, 0.12);
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(214, 140, 69, 0.24), transparent 28%),
+    radial-gradient(circle at top right, rgba(15, 118, 110, 0.22), transparent 34%),
+    linear-gradient(180deg, #f0eadf 0%, #f7f3eb 48%, #efe7d7 100%);
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.3;
+}
+
+.page-shell {
+  position: relative;
+  width: min(1180px, calc(100% - 32px));
+  margin: 40px auto;
+  padding: 20px 20px;
+}
+
+.page-logo {
+  position: absolute;
+  top: 18px;
+  right: 43.4px;
+  width: min(180px, 19vw);
+  height: auto;
+}
+
+main {
+  margin-top: 12px;
+}
+
+.hero,
+.library-panel {
+  animation: rise 0.7s ease both;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.54fr 0.76fr;
+  grid-template-rows: 90%;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.hero-copy,
+.hero-card,
+.panel,
+.stat-card {
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: var(--shadow);
+}
+
+.hero-copy {
+  margin:6px;
+  padding: 28px 30px;
+  padding-left: calc(38px + 0.6rem);
+  border-radius: var(--radius-lg);
+}
+
+.hero-card {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 26px 36px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  width: 65%;
+  height: 65%;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--accent-strong);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+
+h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  margin: 0;
+  font-family: Geometric, "Poppins", "Avenir Next", "Segoe UI", sans-serif;
+  font-size: clamp(2.8rem, 4vw, 4.5rem);
+  line-height: 0.95;
+}
+
+.title-row {
+  position: relative;
+  display: inline-block;
+  padding-right: 96px;
+}
+
+.new-badge {
+  position: absolute;
+  top: -2px;
+  right: 7.5%;
+  color: #6c6f71;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  animation: new-badge-flash 1.5s steps(1, end) infinite;
+}
+
+h2 {
+  font-family: Geometric, "Poppins", "Avenir Next", "Segoe UI", sans-serif;
+  margin: 0;
+  font-size: clamp(1.4rem, 2vw, 2.2rem);
+}
+
+h3 {
+  font-family: Geometric, "Poppins Light", "Avenir Next", "Segoe UI", sans-serif;
+  margin: 0 0 10px;
+  font-size: 1.17rem;
+  color: #6c6f71;
+}
+
+.hero-text,
+.panel-text,
+.table-note,
+label,
+input,
+textarea,
+select,
+button,
+small,
+span,
+p,
+li {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.hero-text {
+  max-width: 60ch;
+  color: var(--muted);
+  margin: 18px 0 0;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 37px;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button.primary {
+  background: #e33241;
+  color: white;
+}
+
+.button.ghost {
+  border-color: var(--line);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.button.wide {
+  width: 100%;
+}
+
+.hero-stat {
+  padding: 12px 0;
+}
+
+.hero-stat h2 {
+  display: block;
+  margin-top: 6px;
+  font-size: clamp(1.8rem, 3.8vw, 3.2rem);
+  font-family: Geometric, "Poppins", "Avenir Next", "Segoe UI", sans-serif;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.hero-divider {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.panel {
+  padding: 28px;
+  border-radius: var(--radius-lg);
+}
+
+.section-heading {
+  margin-top: 35px;
+}
+
+.section-heading h2 {
+  font-size: clamp(1.5rem, 2.9vw, 2.3rem);
+}
+
+.permission-form {
+  display: grid;
+  gap: 14px;
+}
+
+.permission-form label,
+.toolbar label {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 13px 14px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.checkbox-row {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+}
+
+.checkbox-row input {
+  width: 18px;
+  height: 18px;
+  margin-top: 4px;
+}
+
+.status-message {
+  min-height: 1.5em;
+  margin: 0;
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.library-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.toolbar {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 0;
+}
+
+.search-field {
+  min-width: min(320px, 100%);
+}
+
+.tag-groups {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin: 20px 0;
+}
+
+.tag-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tag-list span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--accent-strong);
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
+.table-frame {
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 860px;
+}
+
+thead {
+  background: rgba(15, 118, 110, 0.1);
+}
+
+th,
+td {
+  padding: 13px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+td {
+  font-size: 0.95rem;
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.table-note {
+  margin: 14px 0 0;
+  color: var(--muted);
+}
+
+.access-shell {
+  width: min(820px, calc(100% - 32px));
+}
+
+.access-header,
+.access-main .panel {
+  animation: rise 0.7s ease both;
+}
+
+.access-header {
+  display: grid;
+  gap: 10px;
+}
+
+.access-title {
+  font-size: clamp(2.2rem, 4.8vw, 3.8rem);
+}
+
+.access-text {
+  margin: 0;
+}
+
+.back-link {
+  color: var(--accent-strong);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes new-badge-flash {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .hero,
+  .tag-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy,
+  .hero-card,
+  .panel,
+  .stat-card {
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 10vw, 4rem);
+  }
+
+  .title-row {
+    display: block;
+    padding-right: 0;
+    padding-top: 22px;
+  }
+
+  .new-badge {
+    top: 0;
+    left: 0;
+    right: auto;
+  }
+
+  .hero-card {
+    width: auto;
+    height: auto;
+  }
+
+  .page-logo {
+    position: static;
+    display: block;
+    width: min(150px, 38vw);
+    margin: 0 25px 18px auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 20px, 1180px);
+    padding: 18px;
+
+  }
+
+  .toolbar,
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .search-field {
+    min-width: 100%;
+  }
+}

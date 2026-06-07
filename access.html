@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request Access | MapAid Online Water Library</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell access-shell">
+      <header class="panel access-header">
+        <a class="back-link" href="index.html">Back to library</a>
+        <p class="eyebrow">Access control</p>
+        <h1 class="access-title">Request Access</h1>
+        <p class="hero-text access-text">
+          Submit your details and intended use to gain access to the Online Water
+          Library files.
+        </p>
+      </header>
+
+      <main class="access-main">
+        <section class="panel permission-panel">
+          <div class="section-heading">
+            <p class="eyebrow">MapAid permission gate</p>
+            <h2>Access request form</h2>
+          </div>
+
+          <form id="permission-form" class="permission-form">
+            <label>
+              Full name
+              <input type="text" id="full-name" name="fullName" placeholder="Jane Doe" required />
+            </label>
+            <label>
+              Organisation
+              <input type="text" id="organisation" name="organisation" placeholder="MapAid partner organisation" required />
+            </label>
+            <label>
+              Work email
+              <input type="email" id="email" name="email" placeholder="name@example.org" required />
+            </label>
+            <label>
+              MapAid permission reference
+              <input type="text" id="permission-code" name="permissionCode" placeholder="MAPAID-APPROVED-001" required />
+            </label>
+            <label>
+              Intended use
+              <textarea id="intended-use" name="intendedUse" rows="4" placeholder="Water planning, validation, humanitarian analysis..." required></textarea>
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" id="terms" required />
+              <span>I confirm I have MapAid approval and will use the archive data in line with agreed sharing restrictions.</span>
+            </label>
+            <button type="submit" class="button primary wide">Submit access request</button>
+            <p class="status-message" id="permission-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="access.js"></script>
+  </body>
+  </html>

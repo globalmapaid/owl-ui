@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MapAid Online Water Library</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a href="https://www.globalmapaid.org/"> <img class="page-logo" src="assets/mapaid-logo.png" alt="MapAid logo"/> </a>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">MapAid x Databricks</p>
+          <div class="title-row">
+            <h1>Online Water Library "OWL"</h1>
+            <span class="new-badge">NEW</span>
+          </div>
+          <p class="hero-text">
+            Accessible water data is not just a technical resource in Africa; it is the difference between guessing where help is needed and knowing where lives can be changed. Across the continent, vital information about wells, boreholes, water points, failures, and community access is often buried inside scattered field reports, spreadsheets, government documents and handwritten assessments. Making this data accessible allows us to see where water infrastructure exists, where it is failing, and where new investment is most urgently needed.
+            <br> </br>
+            This is why the Global Map Aid collaboration with Databricks matters. By using data classification to identify and organize documents containing well and borehole information, scattered African water records can become a usable metric of need, progress, and opportunity.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="access.html">Request access</a>
+            <a class="button ghost" href="#library">Browse library</a>
+          </div>
+        </div>
+
+
+        <aside class="hero-card">
+          <article class="hero-stat">
+            <p class="stat-label">Documents Classified</p>
+            <h2 id="document-count">-</h2>
+          </article>
+          <hr class="hero-divider" />
+          <article class="hero-stat">
+            <p class="stat-label">Water-related documents</p>
+            <h2 id="water-document-count">-</h2>
+          </article>
+          <hr class="hero-divider" />
+          <article class="hero-stat">
+            <p class="stat-label">Well extraction rows</p>
+            <h2 id="well-count">-</h2>
+          </article>
+          <hr class="hero-divider" /> 
+          <article class="hero-stat">
+            <p class="stat-label">Named geographies</p>
+            <h2 id="geography-count">-</h2>
+          </article>
+        </aside>
+      </header>
+
+      <main>
+        <section class="panel library-panel" id="library">
+          <div class="library-header">
+            <div class="section-heading">
+              <p class="eyebrow">Archive preview</p>
+              <h2>Search the water library</h2>
+            </div>
+            <div class="toolbar">
+              <label>
+                Dataset
+                <select id="dataset-select">
+                  <option value="documents">Document classifications</option>
+                  <option value="wells">Well extractions</option>
+                </select>
+              </label>
+              <label class="search-field">
+                Search
+                <input type="search" id="table-search" placeholder="Search file names, locations, geographies..." />
+              </label>
+            </div>
+          </div>
+
+          <div class="tag-groups">
+            <div>
+              <h3>Featured geographies</h3>
+              <div class="tag-list" id="featured-geographies"></div>
+            </div>
+          </div>
+
+          <div class="table-frame">
+            <table>
+              <thead id="table-head"></thead>
+              <tbody id="table-body"></tbody>
+            </table>
+          </div>
+          <p class="table-note" id="table-note"></p>
+        </section>
+      </main>
+    </div>
+
+    <script src="web-data/archive-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+  </html>
